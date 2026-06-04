@@ -98,12 +98,12 @@ addLayer("i", {
     },
     52: {
       description: "Further reduce buyable cost and autobuy buyable levels",
-      cost: new Decimal("10{100}100"),
+      cost: new Decimal("10{100}10"),
       unlocked(){return hasUpgrade("i",51)}
     },
     53: {
       description: "Remove buyable cost scaling and buy max buyable levels",
-      cost: new Decimal("10{308}100"),
+      cost: new Decimal("10{308}10"),
       unlocked(){return hasUpgrade("i",52)}
     },
     61: {

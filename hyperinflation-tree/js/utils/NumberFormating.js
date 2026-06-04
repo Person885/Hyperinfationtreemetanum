@@ -195,8 +195,9 @@ function format(num, precision=2, small=false) {
         return "H" + format(n, precision)
     }
     else if (num.lt("J1000000")) { // 5J4 ~ J1,000,000
-        let pol = polarize(array, true)
-        return regularFormat(Math.log10(pol.bottom) + pol.top, precision4) + "J" + commaFormat(pol.height)
+        //let pol = polarize(array, true)
+        //return regularFormat(Math.log10(pol.bottom) + pol.top, precision4) + "J" + commaFormat(pol.height)
+        return beautifyEN(num) // this format is more suitable in this range based on how the numbers go up
     }
     else if (num.lt("J^4 10")) { // J1,000,000 ~ 1K5
         let rep = num.layer
@@ -246,6 +247,58 @@ function formatWhole(num) {
 
 function formatSmall(num, precision=2) {
     return format(num, precision, true)
+}
+
+function beautify(number, f = 0) {
+  if (typeof number == "number") {
+    if (number == Infinity) {
+      return "Infinity";
+    } else if (1e265 > number) {
+      if (1e257 > number) {
+        let exponent = Math.floor(Math.log10(number + 0.1));
+        let mantissa = number / Math.pow(10, exponent);
+        if (exponent < 6) return Math.round(number);
+        if (mantissa.toFixed(3) == "10.000") return "9.999e" + exponent;
+        return mantissa.toFixed(3) + "e" + exponent;
+      } else {
+        return "1.000e257 (cap in base " + game.base + ")";
+      }
+    } else {
+      return "g<sub>" + format(number - 9.9e269, 3) + "</sub> (10)";
+    }
+  } else {
+    return beautifyEN(number, f);
+  }
+}
+
+function beautifyEN(n, f = 0) {
+  let x = EN(n);
+  if (x.isNaN()) return "NaN"
+  if (!x.isFinite()) return "Infinity"
+  if (x.layer > 1) {
+    return `10{{1}}${x.layer+2}`
+  }
+  if (x.layer > 0) {
+    return `10{${beautifyEN(x.omegalog(10))}}10`
+  }
+  if (x.gte("eeeee10")) {
+    return `10{${commaFormat(x.array[x.array.length-1][0]+1)}}${commaFormat(x.array[x.array.length-1][1]+2)}`
+    return x.toString()
+  }
+  if (x.lte(1e5)) {
+    return f === 0 ? x.floor().toString() : x.toNumber().toFixed(f);
+  } else if (x.lte("ee5")) {
+    let exponent = x.log10().floor();
+    let mantissa = x
+      .divide(EN(10).pow(exponent))
+      .toNumber()
+      .toFixed(2);
+    if (mantissa == "10.00") exponent = exponent.add(1);
+    if (mantissa == "10.00") mantissa = "1.00";
+    return mantissa + "e" + beautify(exponent);
+  } else {
+    return "e" + beautifyEN(x.log10())
+  }
 }
 
 function formatTime(s) {
