@@ -52,7 +52,7 @@ function getPointGen() {
   if (hasUpgrade("i",42)){gain=new Decimal(10).pentate(player.points)}
   if (hasUpgrade("i",43)){gain=new Decimal(10).arrow(buyableEffect("i",11))(player.points)}
   if (hasUpgrade("i",61)){gain=gain.expansion(Math.round(Math.sqrt(player.points.layer)*(hasUpgrade("i",62)?player.timePlayed:1)*(hasUpgrade("i",63)?player.timePlayed:1)))}
-  if (gain.isInfinite()){gain=new Decimal(10).expansion(Number.MAX_SAFE_INTEGER)}
+  if (gain.isInfinite()||gain.isNaN()&&hasUpgrade("i",61)){gain=new Decimal(10).expansion(Number.MAX_SAFE_INTEGER)}
   
   return gain.max(1)
 }
