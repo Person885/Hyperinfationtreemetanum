@@ -127,11 +127,11 @@ function setToZero(array, height) {
 }
 
 function format(num, precision=2, small=false) {
-    if (ExpantaNum.isNaN(num)) return "NaN"
+    if (Decimal.isNaN(num)) return "NaN"
     let precision2 = Math.max(3, precision) // for e
     let precision3 = Math.max(3, precision) // for F, G, H
     let precision4 = Math.max(0, precision) // for J, K
-    num = new ExpantaNum(num)
+    num = new Decimal(num)
     let array = num.array
     if (num.abs().lt(1e-308)) return (0).toFixed(precision)
     if (num.sign < 0) return "-" + format(num.neg(), precision)
@@ -214,7 +214,7 @@ function format(num, precision=2, small=false) {
         // ExpantaNum.js considers J1 to be equal to 1e10 rather than 10,
         // hence num.lt("J^999999 10") rather than num.lt("J^1000000 1").
         let pol = polarize(array, true)
-        let layerLess = new ExpantaNum(array)
+        let layerLess = new Decimal(array)
         let layer = num.layer
         let topJ
         if (layerLess.lt("10^^10")) { // Below J2: use Jx = Gx
