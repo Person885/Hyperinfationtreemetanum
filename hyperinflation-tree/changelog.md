@@ -1,6 +1,6 @@
 # The OmegaNum Tree changelog:
 # v1.2 - 5/29/21
-- Added the expantanum version back.
+- Added the Decimal version back.
 
 # v1.1 - 5/28/21
 - Switched to OmegaNum
@@ -12,5 +12,5 @@
 - Formatting improvements
 
 # v0.1 - 4/26/21
-- Converted the tree to ExpantaNum.
+- Converted the tree to Decimal.
 - Fixed NaNs

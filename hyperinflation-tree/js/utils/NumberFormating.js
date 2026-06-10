@@ -1,4 +1,4 @@
-// format-expantanum.js by cloudytheconqueror
+// format-Decimal.js by cloudytheconqueror
 // Code snippets from NumberFormating.js of ducdat0507's The Communitree,
 // which is based on The Modding Tree by Acamaeda (and ported to OmegaNum by upvoid),
 // in turn based on The Prestige Tree by Jacorb and Aarex
@@ -36,7 +36,7 @@ function regularFormat(num, precision) {
     else return f[0] + "." + f[1].substring(0, precision)
 }
 
-// Basically does the opposite of what standardize in ExpantaNum does
+// Basically does the opposite of what standardize in Decimal does
 // Set smallTop to true to force the top value in the result below 10
 function polarize(array, smallTop=false) {
     if (FORMAT_DEBUG >= 1) console.log("Begin polarize: "+JSON.stringify(array)+", smallTop "+smallTop)
@@ -107,7 +107,7 @@ function polarize(array, smallTop=false) {
     return {bottom: bottom, top: top, height: height}
 }
 
-// Search for the value at the requested height of an ExpantaNum array,
+// Search for the value at the requested height of an Decimal array,
 // and return the value if it exists; otherwise return a default value.
 function arraySearch(array, height) {
     for (i=0;i<array.length;i++) {
@@ -117,7 +117,7 @@ function arraySearch(array, height) {
     return height > 0 ? 0 : 10
 }
 
-// Search for the value at the requested height of an ExpantaNum array,
+// Search for the value at the requested height of an Decimal array,
 // and set it to zero if it exists.
 function setToZero(array, height) {
     for (i=0;i<array.length;i++) {
@@ -211,7 +211,7 @@ function format(num, precision=2, small=false) {
         // PsiCubed2 defined Jx as Gx for x < 2, resulting in J1 = 10 rather than 10^10, to
         // prevent issues when defining K and beyond. Therefore, there should be separate
         // cases for when the "top value" is below 2, and above 2.
-        // ExpantaNum.js considers J1 to be equal to 1e10 rather than 10,
+        // Decimal.js considers J1 to be equal to 1e10 rather than 10,
         // hence num.lt("J^999999 10") rather than num.lt("J^1000000 1").
         let pol = polarize(array, true)
         let layerLess = new Decimal(array)

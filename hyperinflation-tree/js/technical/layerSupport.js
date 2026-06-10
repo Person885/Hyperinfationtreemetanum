@@ -1,11 +1,11 @@
 var layers = {}
 const EN = Decimal
-const ExpantaNumZero = new Decimal(0)
-const ExpantaNumOne = new Decimal(1)
-const ExpantaNumNaN = new Decimal(NaN)
-const decimalZero = ExpantaNumZero
-const decimalOne= ExpantaNumOne
-const decimalNaN = ExpantaNumNaN
+const DecimalZero = new Decimal(0)
+const DecimalOne = new Decimal(1)
+const DecimalNaN = new Decimal(NaN)
+const decimalZero = DecimalZero
+const decimalOne= DecimalOne
+const decimalNaN = DecimalNaN
 function layerShown(layer){
     return tmp[layer].layerShown;
 }
@@ -179,9 +179,9 @@ function setupLayer(layer){
     if(!layers[layer].componentStyles) layers[layer].componentStyles = {}
     if(layers[layer].symbol === undefined) layers[layer].symbol = layer.charAt(0).toUpperCase() + layer.slice(1)
     if(layers[layer].unlockOrder === undefined) layers[layer].unlockOrder = []
-    if(layers[layer].gainMult === undefined) layers[layer].gainMult = ExpantaNumOne
-    if(layers[layer].gainExp === undefined) layers[layer].gainExp = ExpantaNumOne
-    if(layers[layer].directMult === undefined) layers[layer].directMult = ExpantaNumOne
+    if(layers[layer].gainMult === undefined) layers[layer].gainMult = DecimalOne
+    if(layers[layer].gainExp === undefined) layers[layer].gainExp = DecimalOne
+    if(layers[layer].directMult === undefined) layers[layer].directMult = DecimalOne
     if(layers[layer].type === undefined) layers[layer].type = "none"
     if(layers[layer].base === undefined || layers[layer].base <= 1) layers[layer].base = 2
     if(layers[layer].softcap === undefined) layers[layer].softcap = new Decimal("e1e7")

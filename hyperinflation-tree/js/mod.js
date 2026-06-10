@@ -5,7 +5,7 @@ let modInfo = {
   pointsName: "points",
   discordName: "",
   discordLink: "",
-  initialStartPoints: new ExpantaNum (10), // Used for hard resets and new players
+  initialStartPoints: new Decimal (10), // Used for hard resets and new players
   
   offlineLimit: 1,  // In hours
 }
@@ -28,7 +28,7 @@ let winText = `Congratulations! You have reached the end and beaten this game, b
 var doNotCallTheseFunctionsEveryTick = ["blowUpEverything"]
 
 function getStartPoints(){
-    return new ExpantaNum(modInfo.initialStartPoints)
+    return new Decimal(modInfo.initialStartPoints)
 }
 
 // Determines if it should show points/sec

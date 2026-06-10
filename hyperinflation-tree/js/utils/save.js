@@ -69,9 +69,9 @@ function getStartLayerData(layer) {
 	if (layerdata.unlocked === undefined)
 		layerdata.unlocked = true;
 	if (layerdata.total === undefined)
-		layerdata.total = new ExpantaNum(0);
+		layerdata.total = new Decimal(0);
 	if (layerdata.best === undefined)
-		layerdata.best = new ExpantaNum(0);
+		layerdata.best = new Decimal(0);
 	if (layerdata.resetTime === undefined)
 		layerdata.resetTime = 0;
         if (layerdata.forceTooltip === undefined)
@@ -81,7 +81,7 @@ function getStartLayerData(layer) {
         if (layerdata.noRespecConfirm === undefined) layerdata.noRespecConfirm = false
 	if (layerdata.clickables == undefined)
 		layerdata.clickables = getStartClickables(layer);
-	layerdata.spentOnBuyables = new ExpantaNum(0);
+	layerdata.spentOnBuyables = new Decimal(0);
 	layerdata.upgrades = [];
 	layerdata.milestones = [];
 	layerdata.lastMilestone = null;
@@ -96,7 +96,7 @@ function getStartBuyables(layer) {
 	if (layers[layer].buyables) {
 		for (id in layers[layer].buyables)
 			if (isPlainObject(layers[layer].buyables[id]))
-				data[id] = new ExpantaNum(0);
+				data[id] = new Decimal(0);
 	}
 	return data;
 }
@@ -124,9 +124,9 @@ function fixSave() {
 
 	for (layer in layers) {
 		if (player[layer].best !== undefined)
-			player[layer].best = new ExpantaNum(player[layer].best);
+			player[layer].best = new Decimal(player[layer].best);
 		if (player[layer].total !== undefined)
-			player[layer].total = new ExpantaNum(player[layer].total);
+			player[layer].total = new Decimal(player[layer].total);
 
 		if (layers[layer].tabFormat && !Array.isArray(layers[layer].tabFormat)) {
 
@@ -166,12 +166,12 @@ function fixData(defaultData, newData) {
 			else
 				fixData(defaultData[item], newData[item]);
 		}
-		else if (defaultData[item] instanceof ExpantaNum) { // Convert to ExpantaNum
+		else if (defaultData[item] instanceof Decimal) { // Convert to Decimal
 			if (newData[item] === undefined)
 				newData[item] = defaultData[item];
 
 			else{
-                let newItemThing=new ExpantaNum(0)
+                let newItemThing=new Decimal(0)
 				newItemThing.array = newData[item].array
 				newItemThing.sign = newData[item].sign
 				newItemThing.layer = newData[item].layer
@@ -243,7 +243,7 @@ function NaNcheck(data) {
 				NaNalert = true;
 			}
 		}
-		else if (data[item] instanceof ExpantaNum) { // Convert to ExpantaNum
+		else if (data[item] instanceof Decimal) { // Convert to Decimal
 		}
 		else if ((!!data[item]) && (data[item].constructor === Object)) {
 			NaNcheck(data[item]);
