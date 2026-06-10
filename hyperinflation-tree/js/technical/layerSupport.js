@@ -1,8 +1,8 @@
 var layers = {}
-const EN = ExpantaNum
-const ExpantaNumZero = new ExpantaNum(0)
-const ExpantaNumOne = new ExpantaNum(1)
-const ExpantaNumNaN = new ExpantaNum(NaN)
+const EN = Decimal
+const ExpantaNumZero = new Decimal(0)
+const ExpantaNumOne = new Decimal(1)
+const ExpantaNumNaN = new Decimal(NaN)
 const decimalZero = ExpantaNumZero
 const decimalOne= ExpantaNumOne
 const decimalNaN = ExpantaNumNaN
@@ -123,7 +123,7 @@ function setupLayer(layer){
                 if (layers[layer].buyables[thing].unlocked === undefined)
                     layers[layer].buyables[thing].unlocked = true
                 layers[layer].buyables[thing].canBuy = function() {return canBuyBuyable(this.layer, this.id)}
-                if (layers[layer].buyables[thing].purchaseLimit === undefined) layers[layer].buyables[thing].purchaseLimit = new ExpantaNum(Infinity)
+                if (layers[layer].buyables[thing].purchaseLimit === undefined) layers[layer].buyables[thing].purchaseLimit = new Decimal(Infinity)
         
             }  
     
@@ -184,8 +184,8 @@ function setupLayer(layer){
     if(layers[layer].directMult === undefined) layers[layer].directMult = ExpantaNumOne
     if(layers[layer].type === undefined) layers[layer].type = "none"
     if(layers[layer].base === undefined || layers[layer].base <= 1) layers[layer].base = 2
-    if(layers[layer].softcap === undefined) layers[layer].softcap = new ExpantaNum("e1e7")
-    if(layers[layer].softcapPower === undefined) layers[layer].softcapPower = new ExpantaNum("0.5")
+    if(layers[layer].softcap === undefined) layers[layer].softcap = new Decimal("e1e7")
+    if(layers[layer].softcapPower === undefined) layers[layer].softcapPower = new Decimal("0.5")
     if(layers[layer].displayRow === undefined) layers[layer].displayRow = layers[layer].row
     if(layers[layer].name === undefined) layers[layer].name = layer
     if(layers[layer].layerShown === undefined) layers[layer].layerShown = true
