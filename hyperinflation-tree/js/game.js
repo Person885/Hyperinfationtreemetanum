@@ -1,4 +1,5 @@
 var player;
+const Decimal = window.Decimal
 var needCanvasUpdate = true;
 var gameEnded = false;
 var scrolled = false;
