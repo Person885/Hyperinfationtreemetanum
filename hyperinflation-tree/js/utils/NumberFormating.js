@@ -5,6 +5,7 @@
 
 // Set to 1 to print debug information to console
 let FORMAT_DEBUG = 0
+const Decimal = window.Decimal
 
 // Maximum number of times you can apply 1+log10(x) to number < 10 until the result is
 // indistinguishable from 1. I calculated it myself and got 45, though I set it to 48 to be safe.
