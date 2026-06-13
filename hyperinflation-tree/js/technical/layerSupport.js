@@ -1,4 +1,5 @@
 var layers = {}
+const Decimal = window.Decimal
 const EN = Decimal
 const DecimalZero = new Decimal(0)
 const DecimalOne = new Decimal(1)
