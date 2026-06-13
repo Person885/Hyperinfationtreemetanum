@@ -1,4 +1,4 @@
-const Decimal = Decimal
+const Decimal = window.Decimal
 addLayer("i", {
     name: "Inflation", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "I", // This appears on the layer's node. Default is the id with the first letter capitalized
