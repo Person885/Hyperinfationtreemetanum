@@ -1,5 +1,5 @@
 // ************ Big Feature related ************
-
+const Decimal = window.Decimal
 function respecBuyables(layer) {
 	if (!layers[layer].buyables) return
 	if (!layers[layer].buyables.respec) return
