@@ -1,3 +1,4 @@
+const Decimal = window.Decimal
 let modInfo = {
   name: "The Hyperinflation Tree",
   id: "hyperinflation",
