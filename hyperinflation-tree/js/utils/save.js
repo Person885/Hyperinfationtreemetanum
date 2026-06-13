@@ -1,4 +1,5 @@
 // ************ Save stuff ************
+const Decimal = window.Decimal
 function save() {
 	localStorage.setItem(modInfo.id, btoa(unescape(encodeURIComponent(JSON.stringify(player)))));
   //ok it saved fine so the problem must be when loading
