@@ -3777,7 +3777,11 @@
     define(function () {
       return Decimal;
     });
-  } else if (typeof module != 'undefined' && module.exports) {
+  }
+    // Force the browser window to recognize Decimal globally
+else if (typeof window !== 'undefined') { window.Decimal = Decimal; return Decimal;}
+
+   else if (typeof module != 'undefined' && module.exports) {
     module.exports = Decimal;
   } else {
     if (!globalScope) {
